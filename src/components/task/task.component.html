@@ -1,0 +1,38 @@
+<main class="todo-container">
+    <div class="max-w-[400px] mx-auto p-5 shadow-md bg-[#f9f9f9] rounded-lg">
+      <input
+        [(ngModel)]="newTask"
+        placeholder="Enter new task"
+        class="w-full p-2 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
+      />
+      <button
+        (click)="addTask()"
+        class="w-full bg-blue-500 text-white font-semibold p-3 rounded-lg shadow-md hover:bg-blue-600 active:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4"
+      >
+        Add
+      </button>
+  
+      <ul>
+        <li
+          *ngFor="let todoItem of todoList; let i = index"
+          [ngClass]="{'completed': todoItem.completed}"
+          class="flex items-center justify-between py-2"
+        >
+          <input
+            type="checkbox"
+            (change)="toggleCompleted(i)"
+            class="mr-3"
+          />
+          <span [class.line-through]="todoItem.completed"> {{ todoItem.task }} </span>
+          <button
+            (click)="deleteTask(todoItem.id)"
+            class="bg-red-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-600 active:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400"
+          >
+            Delete
+          </button>
+        </li>
+      </ul>
+    </div>
+  </main>
+  //hwk
+  
